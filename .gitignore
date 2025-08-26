@@ -6,6 +6,14 @@ Thumbs.db
 *.doc
 *.docx
 *.pdf
+*.mts
+*.mov
+*.mp4
+*.flv
+*.log
+*.APK
+.vscode
+.DS_Store
 
 /tmpX/
 /_build/
