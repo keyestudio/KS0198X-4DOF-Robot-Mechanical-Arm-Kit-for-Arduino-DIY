@@ -14,7 +14,7 @@ In the following experiment, we add a memory function for the robot arm, making 
 
 ![](./media/image-20250825140454525.png)
 
-**Test Code 1 **
+**Test Code 1**
 
 ```
 #include <Servo.h>  // add servo libraries

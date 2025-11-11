@@ -14,7 +14,7 @@ After connecting the Joypad, should upload the test program on Arduino IDE. But 
 
 Uploading the code, open the serial monitor, connect the PS2 Joypad. When press down the key, you should see the corresponding character on the monitor.
 
-**Test Code **
+**Test Code**
 
 ```
 #include <PS2X_lib.h>  //for v1.6
@@ -78,8 +78,6 @@ void loop(){
    you should call this at least once a second
    */
    
-   
-   
  if(error == 1) //skip loop if no controller found
   return; 
   
@@ -111,7 +109,6 @@ void loop(){
     if(ps2x.Button(PSB_SELECT))
          Serial.println("Select is being held");
 
-    
     if(ps2x.Button(ORANGE_FRET)) // print stick value IF TRUE
     {
         Serial.print("Wammy Bar Position:");
@@ -127,7 +124,6 @@ void loop(){
          Serial.println("Start is being held");
     if(ps2x.Button(PSB_SELECT))
          Serial.println("Select is being held");
-         
          
      if(ps2x.Button(PSB_PAD_UP)) {         //will be TRUE as long as button is pressed
        Serial.print("Up held this hard: ");
@@ -146,15 +142,11 @@ void loop(){
      Serial.println(ps2x.Analog(PSAB_PAD_DOWN), DEC);
       }   
   
-    
       vibrate = ps2x.Analog(PSAB_BLUE);        //this will set the large motor vibrate speed based on 
                                               //how hard you press the blue (X) button    
     
     if (ps2x.NewButtonState())               //will be TRUE if any button changes state (on to off, or off to on)
     {
-     
-       
-         
         if(ps2x.Button(PSB_L3))
          Serial.println("L3 pressed");
         if(ps2x.Button(PSB_R3))
@@ -165,10 +157,8 @@ void loop(){
          Serial.println("R2 pressed");
         if(ps2x.Button(PSB_GREEN))
          Serial.println("Triangle pressed");
-         
     }   
          
-    
     if(ps2x.ButtonPressed(PSB_RED))             //will be TRUE if button was JUST pressed
          Serial.println("Circle just pressed");
          
@@ -177,7 +167,6 @@ void loop(){
     
     if(ps2x.NewButtonState(PSB_BLUE))            //will be TRUE if button was JUST pressed OR released
          Serial.println("X just changed");    
-    
     
     if(ps2x.Button(PSB_L1) || ps2x.Button(PSB_R1)) // print stick values if either is TRUE
     {
@@ -190,13 +179,8 @@ void loop(){
         Serial.print(",");
         Serial.println(ps2x.Analog(PSS_RX), DEC); 
     } 
-    
-    
  }
- 
- 
  delay(50);
-     
 }
 
 ```
@@ -224,13 +208,12 @@ In the previous section, we have showed how to use Joystick module to control th
 
 ![](./media/image-20250825162648237.png)
 
-**Test Code **
+**Test Code**
 
 ```
 #include <PS2X_lib.h>
 
 PS2X ps2x; // create PS2 Controller Class
-
 
 //right now, the library does NOT support hot pluggable controllers, meaning 
 //you must always either restart your Arduino after you connect the controller, 
@@ -274,11 +257,8 @@ void setup(){
    
    //Serial.print(ps2x.Analog(1), HEX);
  
- 
  ps2x.enableRumble();              //enable rumble vibration motors
  ps2x.enablePressures();           //enable reading the pressure values from the buttons. 
-  
-
   
 }
 
@@ -290,7 +270,7 @@ void loop(){
    
    you should call this at least once a second
    */
-
+   
   myservo1.attach(A1);  // set the control pin of servo 1 to A1
   myservo2.attach(A0);  // set the control pin of servo 2 to A0
   myservo3.attach(6);   // set the control pin of servo 3 to D6
@@ -305,8 +285,6 @@ void loop(){
        Serial.println("Start is being held");
   if(ps2x.Button(PSB_SELECT))
        Serial.println("Select is being held");
-       
-       
    if(ps2x.Button(PSB_PAD_UP)) {         //will be TRUE as long as button is pressed
      Serial.print("Up held this hard: ");
      Serial.println(ps2x.Analog(PSAB_PAD_UP), DEC);
@@ -324,20 +302,15 @@ void loop(){
    Serial.println(ps2x.Analog(PSAB_PAD_DOWN), DEC);
     }   
 
-  
     vibrate = ps2x.Analog(PSAB_BLUE);        //this will set the large motor vibrate speed based on 
                                             //how hard you press the blue (X) button    
   
   if (ps2x.NewButtonState())               //will be TRUE if any button changes state (on to off, or off to on)
   {
       if(ps2x.Button(PSB_R3))
-        
        Serial.println("R3 pressed");
-     
-       
       if(ps2x.Button(PSB_L3))
        Serial.println("L3 pressed");
-      
       if(ps2x.Button(PSB_L2))
        Serial.println("L2 pressed");
       if(ps2x.Button(PSB_R2))
@@ -346,8 +319,7 @@ void loop(){
        Serial.println("Triangle pressed");
        
   }   
-       
-  
+    
   if(ps2x.ButtonPressed(PSB_RED))             //will be TRUE if button was JUST pressed
        Serial.println("Circle just pressed");
        
@@ -357,13 +329,13 @@ void loop(){
   if(ps2x.NewButtonState(PSB_BLUE))            //will be TRUE if button was JUST pressed OR released
        Serial.println("X just changed");    
 
-    //转动
+    //turn
     zhuandong();
-    //爪子
+    //claw
     zhuazi();
-    //大臂
+    //upper arm
     dabi();
-    //小臂
+    //lower arm
     xiaobi();
     
   if(ps2x.Button(PSB_L1) || ps2x.Button(PSB_R1)) // print stick values if either is TRUE
@@ -545,7 +517,6 @@ void setup()
   myservo4.write(pos4);
   delay(1500);
 
-  
  error = ps2x.config_gamepad(13,11,10,12);   //setup GamePad(clock, command, attention, data) pins, check for error
  
  if(error == 0)
@@ -564,11 +535,8 @@ void setup()
    
    //Serial.print(ps2x.Analog(1), HEX);
  
- 
  ps2x.enableRumble();              //enable rumble vibration motors
  ps2x.enablePressures();           //enable reading the pressure values from the buttons. 
-  
-
   
 }
 
@@ -589,7 +557,6 @@ void loop()
   if(ps2x.Button(PSB_SELECT))
        Serial.println("Select is being held");
        
-       
    if(ps2x.Button(PSB_PAD_UP)) {         //will be TRUE as long as button is pressed
      Serial.print("Up held this hard: ");
      Serial.println(ps2x.Analog(PSAB_PAD_UP), DEC);
@@ -607,7 +574,6 @@ void loop()
    Serial.println(ps2x.Analog(PSAB_PAD_DOWN), DEC);
     }   
 
-  
     vibrate = ps2x.Analog(PSAB_BLUE);        //this will set the large motor vibrate speed based on 
                                             //how hard you press the blue (X) button    
   
@@ -644,7 +610,7 @@ void loop()
       {
         //Serial.println("L3 pressed");
         i=0;
-   //执行
+   //Run 
        pos1 = myservo1.read();
        pos2 = myservo2.read();
        pos3 = myservo3.read();
@@ -742,7 +708,6 @@ void loop()
     }
       }
        
-      
       if(ps2x.Button(PSB_L2))
        Serial.println("L2 pressed");
       if(ps2x.Button(PSB_R2))
@@ -752,7 +717,6 @@ void loop()
        
   }   
        
-  
   if(ps2x.ButtonPressed(PSB_RED))             //will be TRUE if button was JUST pressed
        Serial.println("Circle just pressed");
        
@@ -802,7 +766,7 @@ void zhuandong()
         pos1=1;
       }
      }
-      //左转
+      //turn left
      if(ps2x.Analog (PSS_RX) < 50)    //if push the right joystick to the left
      {
        //Serial.println(ps2x.Analog(PSS_RX), DEC);
@@ -953,7 +917,6 @@ void setup()
   myservo4.write(pos4);
   delay(1500);
 
-  
  error = ps2x.config_gamepad(13,11,10,12);   //setup GamePad(clock, command, attention, data) pins, check for error
  
  if(error == 0){
@@ -970,7 +933,6 @@ void setup()
    Serial.println("Controller found but not accepting commands. see readme.txt to enable debug. Visit www.billporter.info for troubleshooting tips");
    
    //Serial.print(ps2x.Analog(1), HEX);
- 
  
  ps2x.enableRumble();              //enable rumble vibration motors
  ps2x.enablePressures();           //enable reading the pressure values from the buttons. 
@@ -993,7 +955,6 @@ void loop()
   if(ps2x.Button(PSB_SELECT))
        Serial.println("Select is being held");
        
-       
    if(ps2x.Button(PSB_PAD_UP)) {         //will be TRUE as long as button is pressed
      Serial.print("Up held this hard: ");
      Serial.println(ps2x.Analog(PSAB_PAD_UP), DEC);
@@ -1011,7 +972,6 @@ void loop()
    Serial.println(ps2x.Analog(PSAB_PAD_DOWN), DEC);
     }   
 
-  
     vibrate = ps2x.Analog(PSAB_BLUE);        //this will set the large motor vibrate speed based on 
                                             //how hard you press the blue (X) button    
   
@@ -1176,7 +1136,6 @@ void loop()
        
   }   
        
-  
   if(ps2x.ButtonPressed(PSB_RED))             //will be TRUE if button was JUST pressed
        Serial.println("Circle just pressed");
        

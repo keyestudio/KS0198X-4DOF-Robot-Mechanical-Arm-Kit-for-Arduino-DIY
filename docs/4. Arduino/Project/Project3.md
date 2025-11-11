@@ -17,7 +17,7 @@ At first, set the boot posture. The Joystick control is shown as below table.
 
 ![](./media/image-20250825135318111.png)![](./media/image-20250825135326318.png)
 
-**Test Code **
+**Test Code**
 
 ```
 #include <Servo.h>  // add the servo libraries 
@@ -74,7 +74,7 @@ void loop()
 
   // claw
   zhuazi();
-  // rotate
+  // turn
   zhuandong();
   // upper arm
   xiaobi();

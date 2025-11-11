@@ -8,7 +8,7 @@ The sensor’s pin X, Y are for analog sensor, so directly read the measured ana
 
 ![](./media/image-20250825134841453.png)
 
-**Test Code **
+**Test Code** 
 
 ```
 const int right_X = A2; // define the right X pin to A2
